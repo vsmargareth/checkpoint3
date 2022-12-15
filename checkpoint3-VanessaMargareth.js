@@ -14,9 +14,10 @@ class Aluno {
   */
   calculaMedia() {
     let somaNotas = 0
-    for (let soma of this.notas) {
-      somaNotas += soma
-    }
+    // for (let soma of this.notas) {
+    //   somaNotas += soma
+    // }
+    this.notas.forEach(elemento => somaNotas += elemento)
     return (somaNotas / this.notas.length)
   }
   aumentaFaltas() {
@@ -36,11 +37,13 @@ let curso = {
     this.listaDeEstudantes.push(nomeIndividual)
   },
   consultarAluno(nomeAluno) {
-    for (let alunoBuscado of this.listaDeEstudantes) {
-      if (nomeAluno === alunoBuscado.nome) {
-        return alunoBuscado
-      }
-    }
+    // for (let alunoBuscado of this.listaDeEstudantes) {
+    //   if (nomeAluno === alunoBuscado.nome) {
+    //     return alunoBuscado
+    //   }
+    // }
+    const alunoBuscado = this.listaDeEstudantes.find(({ nome }) => nome === nomeAluno)
+    return alunoBuscado
   },
   /*Crie o método que permite adicionar alunos à lista do curso, ou seja, quando chamamos nosso método em nosso objeto curso, deverá adicionar um aluno a mais na propriedade lista de estudantes do objeto curso.
   */
@@ -83,7 +86,7 @@ curso.adicionaAluno('Chopper', 1, [10, 10, 9.5, 8.6]);
 // console.log(curso)         //poque aqui não mostra a nota ? somente[array] ?
 
 /*BUSCAR ALUNO */
-// console.log(curso.consultarAluno('Zoro'))
+console.log(curso.consultarAluno('Zoro'))
 // console.log(curso.consultarAluno('Chopper'))
 
 /*VERIFICAR APROVAÇÃO */
